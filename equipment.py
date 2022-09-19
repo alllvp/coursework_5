@@ -2,9 +2,7 @@ from dataclasses import dataclass
 from typing import List, Optional
 from random import uniform
 import marshmallow_dataclass
-import marshmallow
 import json
-
 
 """
     "id": 1,
@@ -20,6 +18,7 @@ class Armor:
     name: str
     defence: float
     stamina_per_turn: float
+
 
 """
 "id": 1,
@@ -45,7 +44,7 @@ class Weapon:
 
 @dataclass
 class EquipmentData:
-    # TODO содержит 2 списка - с оружием и с броней
+    # содержит 2 списка - с оружием и с броней
     weapons: List[Weapon]
     armors: List[Armor]
 
@@ -56,7 +55,7 @@ class Equipment:
         self.equipment = self._get_equipment_data()
 
     def get_weapon(self, name: str) -> Optional[Weapon]:
-        # TODO возвращает объект оружия по имени
+        # возвращает объект оружия по имени
 
         for weapon in self.equipment.weapons:
             if weapon.name == name:
@@ -65,7 +64,7 @@ class Equipment:
         return None
 
     def get_armor(self, name: str) -> Optional[Armor]:
-        # TODO возвращает объект брони по имени
+        # возвращает объект брони по имени
 
         for armor in self.equipment.armors:
             if armor.name == name:
@@ -73,15 +72,15 @@ class Equipment:
 
         return None
 
-    def get_weapons_names(self) -> list[str]:
-        # TODO возвращаем список с оружием
+    def get_weapons_names(self) -> List[str]:
+        # возвращаем список с оружием
         return [
             weapon.name
             for weapon in self.equipment.weapons
         ]
 
-    def get_armors_names(self) -> list[str]:
-        # TODO возвращаем список с броней
+    def get_armors_names(self) -> List[str]:
+        # возвращаем список с броней
         return [
             armor.name
             for armor in self.equipment.armors
@@ -89,7 +88,7 @@ class Equipment:
 
     @staticmethod
     def _get_equipment_data() -> EquipmentData:
-        # TODO этот метод загружает json в переменную EquipmentData
+        # этот метод загружает json в переменную EquipmentData
         with open("./data/equipment.json", encoding='utf') as equipment_file:
             data = json.load(equipment_file)
             equipment_schema = marshmallow_dataclass.class_schema(EquipmentData)
