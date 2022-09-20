@@ -15,24 +15,24 @@ class Skill(ABC):
 
     @property
     @abstractmethod
-    def name(self):
+    def name(self) -> str:
         pass
 
     @property
     @abstractmethod
-    def stamina(self):
+    def stamina(self) -> float:
         pass
 
     @property
     @abstractmethod
-    def damage(self):
+    def damage(self) -> float:
         pass
 
     @abstractmethod
     def skill_effect(self) -> str:
         pass
 
-    def _is_stamina_enough(self):
+    def _is_stamina_enough(self) -> float:
         return self.user.stamina > self.stamina
 
     def use(self, user: BaseUnit, target: BaseUnit) -> str:

@@ -13,6 +13,7 @@ class UnitClass:
     armor: float
     skill: Skill
 
+
 """
 Имя: "Воин"
 Очки здоровья: 60.0
@@ -33,7 +34,6 @@ WarriorClass = UnitClass(
     armor=1.2,
     skill=FuryPunch(),
 )
-
 
 """
 Имя: "Вор"

@@ -20,7 +20,7 @@ class Arena(metaclass=BaseSingleton):
     game_is_running = False
     battle_result = None
 
-    def start_game(self, player: BaseUnit, enemy: BaseUnit):
+    def start_game(self, player: BaseUnit, enemy: BaseUnit) -> None:
         # НАЧАЛО ИГРЫ -> None
         # присваиваем экземпляру класса аттрибуты "игрок" и "противник"
         # а также выставляем True для свойства "началась ли игра"
@@ -44,7 +44,7 @@ class Arena(metaclass=BaseSingleton):
             self.battle_result = f'{self.player.name} выиграл битву'
         return self._end_game()
 
-    def _stamina_regeneration(self):
+    def _stamina_regeneration(self) -> None:
         # регенерация здоровья и стамины для игрока и врага за ход
         # в этом методе к количеству стамины игрока и врага прибавляется константное значение.
         # главное чтобы оно не привысило максимальные значения (используйте if)
